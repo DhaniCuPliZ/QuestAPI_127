@@ -179,7 +179,7 @@ fun ItemSiswa(
                     contentDescription = null,
                 )
                 Text(
-                    text = siswa.telpon,
+                    text = siswa.telepon,
                     style = MaterialTheme.typography.titleMedium
                 )
             }

@@ -11,6 +11,8 @@ interface RepositoryDataSiswa {
     suspend fun getSatuSiswa(id: Int): DataSiswa
 
     suspend fun editSatuSiswa(id: Int, dataSiswa: DataSiswa): retrofit2.Response<Void>
+
+    suspend fun hapusSatuSiswa(id: Int): retrofit2.Response<Void>
 }
 
 class JaringanRepositoryDataSiswa(

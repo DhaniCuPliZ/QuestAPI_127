@@ -49,7 +49,7 @@ class EditViewModel(
         uiState: DetailSiswa = uiStateSiswa.detailSiswa
     ): Boolean {
         return with(uiState) {
-            nama.isNotBlank() && alamat.isNotBlank() && telpon.isNotBlank()
+            nama.isNotBlank() && alamat.isNotBlank() && telepon.isNotBlank()
         }
     }
 

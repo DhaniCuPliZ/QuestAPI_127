@@ -8,6 +8,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.questapi.repositori.AplikasiDataSiswa
 import com.example.questapi.repositori.ContainerApp
 import com.example.questapi.viewmodel.DetailViewModel
+import com.example.questapi.viewmodel.EditViewModel
 import com.example.questapi.viewmodel.EntryViewModel
 import com.example.questapi.viewmodel.HomeViewModel
 
@@ -20,6 +21,12 @@ object PenyediaViewModel {
         initializer { EntryViewModel(aplikasiDataSiswa().container.repositoryDataSiswa) }
         initializer {
             DetailViewModel(
+                this.createSavedStateHandle(),
+                aplikasiDataSiswa().container.repositoryDataSiswa
+            )
+        }
+        initializer {
+            EditViewModel(
                 this.createSavedStateHandle(),
                 aplikasiDataSiswa().container.repositoryDataSiswa
             )

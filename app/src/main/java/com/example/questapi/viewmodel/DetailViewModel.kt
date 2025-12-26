@@ -35,15 +35,15 @@ class DetailViewModel(
         private set
 
     init {
-        getSatuSiswa()
+        getDataSiswa()
     }
 
-    fun getSatuSiswa() {
+    fun getDataSiswa() {
         viewModelScope.launch {
             statusUIDetail = StatusUIDetail.Loading
             statusUIDetail = try {
                 StatusUIDetail.Success(
-                    datasiswa = repositoryDataSiswa.getSatuSiswa(idSiswa)
+                    datasiswa = repositoryDataSiswa.getDataSiswa(idSiswa)
                 )
             } catch (e: IOException) {
                 StatusUIDetail.Error
@@ -54,9 +54,9 @@ class DetailViewModel(
     }
 
     @SuppressLint("SuspiciousIndentation")
-    suspend fun hapusSatuSiswa() {
+    suspend fun hapusDataSiswa() {
         val resp: Response<Void> =
-            repositoryDataSiswa.hapusSatuSiswa(idSiswa)
+            repositoryDataSiswa.hapusDataSiswa(idSiswa)
 
         if (resp.isSuccessful) {
             println("Sukses Hapus Data : ${resp.message()}")

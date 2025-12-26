@@ -1,8 +1,7 @@
 package com.example.questapi.viewmodel
 
-import androidx.compose.runtime.getValue
+
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,10 +10,11 @@ import com.example.questapi.modeldata.UIStateSiswa
 import com.example.questapi.modeldata.toDataSiswa
 import com.example.questapi.modeldata.toUiStateSiswa
 import com.example.questapi.repositori.RepositoryDataSiswa
-import com.example.questapi.uicontroller.route.DestinasiDetail
-
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import com.example.questapi.uicontroller.route.DestinasiEdit
 
 class EditViewModel(
     savedStateHandle: SavedStateHandle,
@@ -25,12 +25,12 @@ class EditViewModel(
         private set
 
     private val idSiswa: Int =
-        checkNotNull(savedStateHandle[DestinasiDetail.itemIdArg])
+        checkNotNull(savedStateHandle[DestinasiEdit.itemIdArg])
 
     init {
         viewModelScope.launch {
             uiStateSiswa = repositoryDataSiswa
-                .getSatuSiswa(idSiswa)
+                .getDataSiswa(idSiswa)
                 .toUiStateSiswa(true)
         }
     }
@@ -50,10 +50,10 @@ class EditViewModel(
         }
     }
 
-    suspend fun editSatuSiswa() {
+    suspend fun editDataSiswa() {
         if (validasiInput(uiStateSiswa.detailSiswa)) {
             val call: Response<Void> =
-                repositoryDataSiswa.editSatuSiswa(
+                repositoryDataSiswa.editDataSiswa(
                     idSiswa,
                     uiStateSiswa.detailSiswa.toDataSiswa()
                 )

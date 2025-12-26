@@ -13,6 +13,11 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.questapi.uicontroller.route.DestinasiDetail
+import com.example.questapi.uicontroller.route.DestinasiEdit
+import com.example.questapi.view.DetailSiswaScreen
+import com.example.questapi.view.EditSiswaScreen
 
 
 @Composable

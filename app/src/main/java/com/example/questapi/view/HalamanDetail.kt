@@ -85,7 +85,7 @@ fun DetailSiswaScreen(
             statusUIDetail = viewModel.statusUIDetail,
             onDelete = {
                 coroutineScope.launch {
-                    viewModel.hapusSatuSiswa()
+                    viewModel.hapusDataSiswa()
                     navigateBack()
                 }
             },

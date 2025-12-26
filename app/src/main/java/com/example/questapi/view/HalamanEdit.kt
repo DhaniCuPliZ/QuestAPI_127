@@ -37,7 +37,7 @@ fun EditSiswaScreen(
             onSiswaValueChange = viewModel::updateUiState,
             onSaveClick = {
                 coroutineScope.launch {
-                    viewModel.editDataSiswa()
+                    viewModel.editSatuSiswa()
                     navigateBack()
                 }
             },

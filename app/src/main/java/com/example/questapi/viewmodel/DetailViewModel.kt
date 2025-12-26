@@ -18,7 +18,7 @@ import retrofit2.Response
 import java.io.IOException
 
 sealed interface StatusUIDetail {
-    data class Success(val datasiswa: DataSiswa) : StatusUIDetail
+    data class Success(val satusiswa: DataSiswa) : StatusUIDetail
     object Error : StatusUIDetail
     object Loading : StatusUIDetail
 }
@@ -35,15 +35,15 @@ class DetailViewModel(
         private set
 
     init {
-        getDataSiswa()
+        getSatuSiswa()
     }
 
-    fun getDataSiswa() {
+    fun getSatuSiswa() {
         viewModelScope.launch {
             statusUIDetail = StatusUIDetail.Loading
             statusUIDetail = try {
                 StatusUIDetail.Success(
-                    datasiswa = repositoryDataSiswa.getDataSiswa(idSiswa)
+                    satusiswa = repositoryDataSiswa.getSatuSiswa(idSiswa)
                 )
             } catch (e: IOException) {
                 StatusUIDetail.Error
@@ -54,9 +54,9 @@ class DetailViewModel(
     }
 
     @SuppressLint("SuspiciousIndentation")
-    suspend fun hapusDataSiswa() {
+    suspend fun hapusSatuSiswa() {
         val resp: Response<Void> =
-            repositoryDataSiswa.hapusDataSiswa(idSiswa)
+            repositoryDataSiswa.hapusSatuSiswa(idSiswa)
 
         if (resp.isSuccessful) {
             println("Sukses Hapus Data : ${resp.message()}")

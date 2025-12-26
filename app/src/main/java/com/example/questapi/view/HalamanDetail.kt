@@ -65,7 +65,7 @@ fun DetailSiswaScreen(
                 onClick = {
                     when (uiState) {
                         is StatusUIDetail.Success ->
-                            navigateToEditItem(uiState.datasiswa.id)
+                            navigateToEditItem(uiState.satusiswa.id)
                         else -> {}
                     }
                 },
@@ -85,7 +85,7 @@ fun DetailSiswaScreen(
             statusUIDetail = viewModel.statusUIDetail,
             onDelete = {
                 coroutineScope.launch {
-                    viewModel.hapusDataSiswa()
+                    viewModel.hapusSatuSiswa()
                     navigateBack()
                 }
             },
@@ -109,7 +109,7 @@ private fun BodyDetailDataSiswa(
         var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
         when(statusUIDetail){
             is StatusUIDetail.Success -> DetailDataSiswa(
-                siswa = statusUIDetail.datasiswa,
+                siswa = statusUIDetail.satusiswa,
                 modifier = Modifier.fillMaxWidth())
             else -> {}
         }

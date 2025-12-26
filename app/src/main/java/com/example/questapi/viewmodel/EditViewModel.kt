@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.questapi.modeldata.DetailSiswa
 import com.example.questapi.modeldata.UIStateSiswa
 import com.example.questapi.modeldata.toDataSiswa
-import com.example.questapi.modeldata.toUiStateSiswa
+import com.example.questapi.modeldata.toUIStateSiswa
 import com.example.questapi.repositori.RepositoryDataSiswa
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -30,8 +30,8 @@ class EditViewModel(
     init {
         viewModelScope.launch {
             uiStateSiswa = repositoryDataSiswa
-                .getDataSiswa(idSiswa)
-                .toUiStateSiswa(true)
+                .getSatuSiswa(idSiswa)
+                .toUIStateSiswa(true)
         }
     }
 
@@ -50,10 +50,10 @@ class EditViewModel(
         }
     }
 
-    suspend fun editDataSiswa() {
+    suspend fun editSatuSiswa() {
         if (validasiInput(uiStateSiswa.detailSiswa)) {
             val call: Response<Void> =
-                repositoryDataSiswa.editDataSiswa(
+                repositoryDataSiswa.editSatuSiswa(
                     idSiswa,
                     uiStateSiswa.detailSiswa.toDataSiswa()
                 )

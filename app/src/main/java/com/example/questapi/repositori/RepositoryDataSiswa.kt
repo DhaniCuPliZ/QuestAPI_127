@@ -8,11 +8,11 @@ interface RepositoryDataSiswa {
 
     suspend fun postDataSiswa(dataSiswa: DataSiswa) :retrofit2.Response<Void>
 
-    suspend fun getDataSiswa(id: Int): DataSiswa
+    suspend fun getSatuSiswa(id: Int): DataSiswa
 
-    suspend fun editDataSiswa(id: Int, dataSiswa: DataSiswa): retrofit2.Response<Void>
+    suspend fun editSatuSiswa(id: Int, dataSiswa: DataSiswa): retrofit2.Response<Void>
 
-    suspend fun hapusDataSiswa(id: Int): retrofit2.Response<Void>
+    suspend fun hapusSatuSiswa(id: Int): retrofit2.Response<Void>
 }
 
 class JaringanRepositoryDataSiswa(
@@ -22,10 +22,10 @@ class JaringanRepositoryDataSiswa(
         .getSiswa()
     override suspend fun postDataSiswa(dataSiswa: DataSiswa):retrofit2
     .Response<Void> = serviceApiSiswa.postSiswa(dataSiswa)
-    override suspend fun getDataSiswa(id: Int): DataSiswa =
-        serviceApiSiswa.getDataSiswa(id)
-    override suspend fun editDataSiswa(id: Int, dataSiswa: DataSiswa): retrofit2.Response<Void> =
-        serviceApiSiswa.editDataSiswa(id, dataSiswa)
-    override suspend fun hapusDataSiswa(id: Int): retrofit2.Response<Void> =
-        serviceApiSiswa.hapusDataSiswa(id)
+    override suspend fun getSatuSiswa(id: Int): DataSiswa =
+        serviceApiSiswa.getSatuSiswa(id)
+    override suspend fun editSatuSiswa(id: Int, dataSiswa: DataSiswa): retrofit2.Response<Void> =
+        serviceApiSiswa.editSatuSiswa(id, dataSiswa)
+    override suspend fun hapusSatuSiswa(id: Int): retrofit2.Response<Void> =
+        serviceApiSiswa.hapusSatuSiswa(id)
 }
